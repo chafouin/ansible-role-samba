@@ -95,6 +95,16 @@
   with_items: "{{ samba_services }}"
   tags: samba
 
+- name: Create Unix users if they don't exist yet
+  user: >
+    name={{ item.name }}
+    comment="Create user {{ item.name }}"
+    shell="/bin/false"
+    system="true"
+  no_log: true
+  with_items: "{{ samba_users }}"
+  tags: samba
+
 - name: Create Samba users if they don't exist yet
   shell: >
     (pdbedit --user={{ item.name }} 2>&1 > /dev/null) \

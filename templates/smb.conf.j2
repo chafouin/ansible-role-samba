@@ -108,14 +108,23 @@
 {% if share.write_list is defined %}
   write list = {{ share.write_list }}
 {% endif %}
+{% if share.user is defined %}
+  force user = {{ share.user }}
+{% endif %}
 {% if share.group is defined %}
   force group = {{ share.group }}
 {% endif %}
 {% if share.guest_ok is defined %}
   guest ok = {{ share.guest_ok }}
 {% endif %}
-{% if share.writable is defined %}
-  writable = {{ share.writable }}
+{% if share.read_only is defined %}
+  read only = {{ share.read_only }}
+{% endif %}
+{% if share.writeable is defined %}
+  writeable = {{ share.writeable }}
+{% endif %}
+{% if share.browseable is defined %}
+  browseable = {{ share.browseable }}
 {% endif %}
   create mode = {{ share.create_mode|default('0664') }}
   force create mode = {{ share.force_create_mode|default('0664') }}
